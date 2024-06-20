@@ -27,7 +27,7 @@
     background-color: #4285f4;
     color: white;
     &:hover {
-      background-color: #357ae8;
+      background-color: darken(#4285f4, 20%);
       border: none;
     }
   }
