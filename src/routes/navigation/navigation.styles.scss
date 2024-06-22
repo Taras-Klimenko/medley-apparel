@@ -21,6 +21,11 @@
     .nav-link {
       padding: 10px 15px;
       cursor: pointer;
+      transition: color 0.3s ease;
+
+      &:hover {
+        color: lighten(black, 30%);
+      }
     }
   }
 }
