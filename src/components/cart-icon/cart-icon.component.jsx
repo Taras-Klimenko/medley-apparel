@@ -6,10 +6,11 @@ import './cart-icon.styles.scss';
 
 const CartIcon = () => {
     const {isCartOpen, setIsCartOpen, cartItemCount } = useContext(CartContext);
-    const toggleIsCartOpen = () => {
+
+    const toggleIsCartOpen = (event) => {
+        event.stopPropagation();
         setIsCartOpen(!isCartOpen)
     }
-    console.log(cartItemCount)
 
     return(
         <div className='cart-icon-container' onClick={toggleIsCartOpen}>
