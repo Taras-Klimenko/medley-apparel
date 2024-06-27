@@ -28,8 +28,8 @@ const Checkout = () => {
                 <span>Remove</span>
             </div>
         </div>
-            {cartItems.map((cartItem) => <CheckoutItem key={cartItem.id} cartItem={cartItem}/>
-            )}
+            {cartItems.length ?(cartItems.map((cartItem) => <CheckoutItem key={cartItem.id} cartItem={cartItem}/>
+            )) : <h2>Shopping cart is empty</h2>}
             <span className='total'>{`Total: $ ${cartTotal}`}</span>
         </div>)
 }

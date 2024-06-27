@@ -1,4 +1,4 @@
-import {useParams} from 'react-router-dom';
+import {useParams, Link} from 'react-router-dom';
 import { useContext, useState, useEffect, Fragment } from 'react';
 
 import { CategoriesContext } from '../../contexts/categories.context';
@@ -18,7 +18,7 @@ const Category = () => {
 
     return (
         <Fragment>
-            <h2 className='category-title'>{category.toUpperCase()}</h2>
+            <Link to='/shop'><h2 className='category-title'>&#10094;&#10094;&#10094;&nbsp;{category.toUpperCase()}</h2></Link>
             <div className='single-category-container'>
                 {products && products.map((product) => <ProductCard key={product.id} product={product} />)}
             </div>

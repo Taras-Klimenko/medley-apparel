@@ -38,11 +38,12 @@
     justify-content: space-between;
     font-size: 18px;
     .name {
-      width: 90%;
+      width: 80%;
       margin-bottom: 15px;
     }
     .price {
-      width: 10%;
+      text-align: end;
+      width: 20%;
     }
   }
 }

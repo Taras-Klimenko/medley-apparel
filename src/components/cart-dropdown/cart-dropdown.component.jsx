@@ -8,7 +8,7 @@ import CartItem from '../cart-item/cart-item.component';
 
 const CartDropdown = ({isCartOpen}) => {
 
-    const {cartItems, setIsCartOpen} = useContext(CartContext);
+    const {cartItems, setIsCartOpen, cartTotal} = useContext(CartContext);
     const navigate = useNavigate();
     const dropdownRef = useRef();
     
@@ -39,6 +39,7 @@ const CartDropdown = ({isCartOpen}) => {
         <div className='cart-items'>
             {cartItems.length ? (cartItems.map((cartItem) => <CartItem key={cartItem.id} cartItem={cartItem}/>)) : (<span className='empty-cart-message'>Cart is empty</span>) }
         </div>
+        <span className='dropdown-total'>{`Total: $ ${cartTotal}`}</span>
         <Button onClick={goToCheckoutHandler}>Checkout</Button>
     </div>
 }

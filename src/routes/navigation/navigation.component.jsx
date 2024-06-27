@@ -1,5 +1,5 @@
 import { Fragment, useContext} from 'react';
-import {Outlet, Link} from 'react-router-dom';
+import {Outlet, Link, useNavigate} from 'react-router-dom';
 import {signOutUser} from '../../utils/firebase/firebase.utils';
 
 
@@ -16,16 +16,22 @@ const Navigation = () => {
 
   const {currentUser} = useContext(UserContext)
   const {isCartOpen } = useContext(CartContext)
+  const navigate = useNavigate();
+
+  const signOutHandler = () => {
+    signOutUser();
+    navigate('/');
+  }
 
     return (
       <Fragment>
         <div className='navigation'>
-            <Link className='logo-container' to='/'><MedleyLogo className='logo'/></Link>
+            <Link className='logo-container' to='/home'><MedleyLogo className='logo'/></Link>
           
           <div className='nav-links-container'>
             <Link className='nav-link' to='/shop'>SHOP</Link>
             {
-              currentUser ? (<span className='nav-link' onClick={signOutUser}>SIGN OUT</span>) : (<Link className='nav-link' to='/auth'>SIGN IN</Link>)
+              currentUser ? (<span className='nav-link' onClick={signOutHandler}>SIGN OUT</span>) : (<Link className='nav-link' to='/auth'>SIGN IN</Link>)
             }
             <CartIcon />
           </div>

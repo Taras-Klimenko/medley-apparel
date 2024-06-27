@@ -1,5 +1,6 @@
 import {useState, useEffect} from 'react';
 import { getRedirectResult} from 'firebase/auth'
+import { useNavigate } from 'react-router-dom';
 import {auth, createUserDocumentFromAuth, signInWithGoogleRedirect } from '../../utils/firebase/firebase.utils';
 import { signInUserWithEmailAndPassword } from "../../utils/firebase/firebase.utils";
 
@@ -15,7 +16,7 @@ const defaultFormFields = {
 
 const SignInForm = () => {
 
-
+    const navigate = useNavigate();
 
     useEffect(() =>{
         async function fetchRedirectResults() {
@@ -46,6 +47,7 @@ const SignInForm = () => {
         try {
             await signInUserWithEmailAndPassword(email, password)
             clearFormFields();
+            navigate('/home')
         }
         catch(error) {
             console.error(error)
