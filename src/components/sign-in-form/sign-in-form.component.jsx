@@ -1,7 +1,7 @@
 import {useState, useEffect} from 'react';
 import { getRedirectResult} from 'firebase/auth'
 import { useNavigate } from 'react-router-dom';
-import {auth, createUserDocumentFromAuth, signInWithGoogleRedirect } from '../../utils/firebase/firebase.utils';
+import {auth, createUserDocumentFromAuth, signInWithGoogleRedirect, signInWithGooglePopup } from '../../utils/firebase/firebase.utils';
 import { signInUserWithEmailAndPassword } from "../../utils/firebase/firebase.utils";
 
 import './sign-in-form.styles.scss'
@@ -18,14 +18,18 @@ const SignInForm = () => {
 
     const navigate = useNavigate();
 
-    useEffect(() =>{
-        async function fetchRedirectResults() {
-        const response = await getRedirectResult(auth);
-        if (response) {
-            const userDocRef = await createUserDocumentFromAuth(response.user);
-        }}
-    fetchRedirectResults();
-    },[])
+    const signInWithGoogle = async() => {
+        await signInWithGooglePopup();
+    }
+
+    // useEffect(() =>{
+    //     async function fetchRedirectResults() {
+    //     const response = await getRedirectResult(auth);
+    //     if (response) {
+    //         const userDocRef = await createUserDocumentFromAuth(response.user);
+    //     }}
+    // fetchRedirectResults();
+    // },[])
 
     const [formFields, setFormFields] = useState(defaultFormFields);
     const {email, password} = formFields;
@@ -73,7 +77,7 @@ const SignInForm = () => {
                 <FormInput required type="password" name="password" id="password" value={password} onChange={handleChange} label="Password"/>
                 <div className='buttons-container'>
                     <Button type="submit">Sign In</Button>
-                    <Button type="button" buttonType='google' onClick={signInWithGoogleRedirect}>Google Sign in</Button>
+                    <Button type="button" buttonType='google' onClick={signInWithGoogle}>Google Sign in</Button>
                 </div>
             </form>
         </div>)

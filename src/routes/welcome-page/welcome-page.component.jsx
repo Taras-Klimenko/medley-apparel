@@ -1,14 +1,13 @@
 import './welcome-page.styles.scss'
-import { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import Button from '../../components/button/button.component'
 
-import { UserContext } from '../../contexts/user.context';
+import {useSelector} from 'react-redux'
+import {selectCurrentUser} from '../../store/user/user.selector'
 
 const WelcomePage = () => {
 
-    const {currentUser} = useContext(UserContext);
-
+    const currentUser = useSelector(selectCurrentUser);
 
     return (
         <section id='welcome-page'>

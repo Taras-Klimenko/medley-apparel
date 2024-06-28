@@ -8,8 +8,6 @@ import { store } from './store/store';
 
 import App from './App';
 
-import { UserContextProvider } from './contexts/user.context';
-import { CategoriesContextProvider } from './contexts/categories.context';
 import { CartContextProvider } from './contexts/cart.context';
 
 import './index.scss';
@@ -19,13 +17,9 @@ root.render(
   <React.StrictMode>
     <Provider store={store}>
       <BrowserRouter>
-        {/* <UserContextProvider> */}
-        <CategoriesContextProvider>
-          <CartContextProvider>
-            <App />
-          </CartContextProvider>
-        </CategoriesContextProvider>
-        {/* </UserContextProvider> */}
+        <CartContextProvider>
+          <App />
+        </CartContextProvider>
       </BrowserRouter>
     </Provider>
   </React.StrictMode>
