@@ -1,20 +1,27 @@
 import './cart-dropdown.styles.scss';
-import { useContext, useEffect, useRef } from 'react';
+import {useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { CartContext } from '../../contexts/cart.context';
+
+import {useDispatch, useSelector} from 'react-redux';
+import {setIsCartOpen} from '../../store/cart/cart.action'
+import {selectCartItems, selectCartTotal} from '../../store/cart/cart.selector'
 
 import Button from '../button/button.component'
 import CartItem from '../cart-item/cart-item.component';
 
 const CartDropdown = ({isCartOpen}) => {
 
-    const {cartItems, setIsCartOpen, cartTotal} = useContext(CartContext);
+    const dispatch = useDispatch();
+
+    const cartItems = useSelector(selectCartItems);
+    const cartTotal = useSelector(selectCartTotal);
+
     const navigate = useNavigate();
     const dropdownRef = useRef();
     
     const onLoseFocusHandler = (event) => {
         if (dropdownRef.current && !dropdownRef.current.contains(event.target)){
-            setIsCartOpen(false);
+            dispatch(setIsCartOpen(false));
         }
     }
 
