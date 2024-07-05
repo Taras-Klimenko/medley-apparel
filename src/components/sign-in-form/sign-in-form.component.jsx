@@ -1,8 +1,7 @@
-import {useState, useEffect} from 'react';
-import { getRedirectResult} from 'firebase/auth'
+import {useState} from 'react';
+import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import {auth, createUserDocumentFromAuth, signInWithGoogleRedirect, signInWithGooglePopup } from '../../utils/firebase/firebase.utils';
-import { signInUserWithEmailAndPassword } from "../../utils/firebase/firebase.utils";
+import {googleSignInStart, emailSignInStart} from '../../store/user/user.action'
 
 import './sign-in-form.styles.scss'
 
@@ -15,21 +14,12 @@ const defaultFormFields = {
 };
 
 const SignInForm = () => {
-
+    const dispatch = useDispatch();
     const navigate = useNavigate();
 
     const signInWithGoogle = async() => {
-        await signInWithGooglePopup();
+        dispatch(googleSignInStart())
     }
-
-    // useEffect(() =>{
-    //     async function fetchRedirectResults() {
-    //     const response = await getRedirectResult(auth);
-    //     if (response) {
-    //         const userDocRef = await createUserDocumentFromAuth(response.user);
-    //     }}
-    // fetchRedirectResults();
-    // },[])
 
     const [formFields, setFormFields] = useState(defaultFormFields);
     const {email, password} = formFields;
@@ -49,21 +39,12 @@ const SignInForm = () => {
         event.preventDefault();
 
         try {
-            await signInUserWithEmailAndPassword(email, password)
+            dispatch(emailSignInStart(email, password))
             clearFormFields();
             navigate('/home')
         }
         catch(error) {
-            console.error(error)
-            switch(error.code){
-                case 'auth/invalid-credential':
-                    alert('Wrong email or password');
-                    break;
-                default:
-                    console.log(error)
-            }
-
-            
+            console.error('User sign in failed', error)
         }
     }
 

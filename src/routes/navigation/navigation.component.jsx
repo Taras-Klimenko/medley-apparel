@@ -1,6 +1,6 @@
 import { Fragment} from 'react';
 import {Outlet, Link, useNavigate} from 'react-router-dom';
-import {signOutUser} from '../../utils/firebase/firebase.utils';
+import { signOutStart } from '../../store/user/user.action';
 
 
 import {ReactComponent as MedleyLogo} from '../../assets/medley-logo.svg';
@@ -9,18 +9,24 @@ import CartDropdown from '../../components/cart-dropdown/cart-dropdown.component
 
 import './navigation.styles.scss'
 
-import {useSelector} from 'react-redux'
+import {useSelector, useDispatch} from 'react-redux'
 import {selectCurrentUser} from '../../store/user/user.selector'
 import {selectIsCartOpen} from '../../store/cart/cart.selector'
 
 
 const Navigation = () => {
 
+  const dispatch = useDispatch();
+
   const currentUser = useSelector(selectCurrentUser);
 
   const isCartOpen  = useSelector(selectIsCartOpen);
 
   const navigate = useNavigate();
+
+  const signOutUser = () => {
+    dispatch(signOutStart())
+  }
 
   const signOutHandler = () => {
     signOutUser();
