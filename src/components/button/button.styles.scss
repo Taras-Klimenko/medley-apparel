@@ -5,16 +5,17 @@
   letter-spacing: 0.5px;
   line-height: 50px;
   padding: 0 35px 0 35px;
-  font-size: 15px;
+  font-size: 1rem;
   background-color: black;
   color: white;
   text-transform: uppercase;
-  font-family: 'Open Sans Condensed';
-  font-weight: bolder;
+  font-family: 'Outfit', sans-serif;
+  font-weight: 500;
   border: none;
   cursor: pointer;
   display: flex;
   justify-content: center;
+  align-items: center;
   transition: all 0.3s ease;
 
   &:hover {
@@ -40,6 +41,21 @@
       background-color: black;
       color: white;
       border: none;
+    }
+  }
+
+  .rotate-spinner {
+    width: 34px;
+    height: 34px;
+    border: 5px solid #e0e0e0;
+    border-top-color: black;
+    border-radius: 50%;
+    animation: rotate 2s infinite linear;
+
+    @keyframes rotate {
+      to {
+        transform: rotate(360deg);
+      }
     }
   }
 }

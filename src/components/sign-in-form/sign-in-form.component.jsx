@@ -1,7 +1,8 @@
-import {useState} from 'react';
-import { useDispatch } from 'react-redux';
+import {useEffect, useState} from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import {googleSignInStart, emailSignInStart} from '../../store/user/user.action'
+import {selectCurrentUser} from '../../store/user/user.selector'
 
 import './sign-in-form.styles.scss'
 
@@ -13,9 +14,21 @@ const defaultFormFields = {
     password: '',
 };
 
+
+
+
 const SignInForm = () => {
+
+    const currentUser = useSelector(selectCurrentUser);
     const dispatch = useDispatch();
     const navigate = useNavigate();
+
+    useEffect(() =>{
+        if(currentUser?.id) {
+            navigate('/home');
+        }
+    }, [currentUser])
+    
 
     const signInWithGoogle = async() => {
         dispatch(googleSignInStart())
