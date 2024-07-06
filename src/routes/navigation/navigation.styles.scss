@@ -4,11 +4,20 @@
   display: flex;
   justify-content: space-between;
   margin-bottom: 25px;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background-color: white;
 
   .logo-container {
     height: 100%;
     width: 70px;
-    padding: 25px;
+    margin-left: -20px;
+
+    svg {
+      position: relative;
+      top: 15px;
+    }
   }
 
   .nav-links-container {

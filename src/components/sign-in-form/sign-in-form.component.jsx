@@ -1,7 +1,8 @@
-import {useState, useEffect} from 'react';
-import { getRedirectResult} from 'firebase/auth'
-import {auth, createUserDocumentFromAuth, signInWithGoogleRedirect } from '../../utils/firebase/firebase.utils';
-import { signInUserWithEmailAndPassword } from "../../utils/firebase/firebase.utils";
+import {useEffect, useState} from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import {googleSignInStart, emailSignInStart} from '../../store/user/user.action'
+import {selectCurrentUser} from '../../store/user/user.selector'
 
 import './sign-in-form.styles.scss'
 
@@ -13,18 +14,25 @@ const defaultFormFields = {
     password: '',
 };
 
+
+
+
 const SignInForm = () => {
 
-
+    const currentUser = useSelector(selectCurrentUser);
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
 
     useEffect(() =>{
-        async function fetchRedirectResults() {
-        const response = await getRedirectResult(auth);
-        if (response) {
-            const userDocRef = await createUserDocumentFromAuth(response.user);
-        }}
-    fetchRedirectResults();
-    },[])
+        if(currentUser?.id) {
+            navigate('/home');
+        }
+    }, [currentUser])
+    
+
+    const signInWithGoogle = async() => {
+        dispatch(googleSignInStart())
+    }
 
     const [formFields, setFormFields] = useState(defaultFormFields);
     const {email, password} = formFields;
@@ -44,20 +52,12 @@ const SignInForm = () => {
         event.preventDefault();
 
         try {
-            await signInUserWithEmailAndPassword(email, password)
+            dispatch(emailSignInStart(email, password))
             clearFormFields();
+            navigate('/home')
         }
         catch(error) {
-            console.error(error)
-            switch(error.code){
-                case 'auth/invalid-credential':
-                    alert('Wrong email or password');
-                    break;
-                default:
-                    console.log(error)
-            }
-
-            
+            console.error('User sign in failed', error)
         }
     }
 
@@ -71,7 +71,7 @@ const SignInForm = () => {
                 <FormInput required type="password" name="password" id="password" value={password} onChange={handleChange} label="Password"/>
                 <div className='buttons-container'>
                     <Button type="submit">Sign In</Button>
-                    <Button type="button" buttonType='google' onClick={signInWithGoogleRedirect}>Google Sign in</Button>
+                    <Button type="button" buttonType='google' onClick={signInWithGoogle}>Google Sign in</Button>
                 </div>
             </form>
         </div>)
