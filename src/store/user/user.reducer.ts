@@ -1,4 +1,3 @@
-import { USER_ACTION_TYPES } from './user.types';
 import { UnknownAction } from 'redux';
 import {
   signUpFailed,
