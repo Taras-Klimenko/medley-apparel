@@ -2,7 +2,7 @@ import './button.styles.scss';
 import { FC, ButtonHTMLAttributes } from 'react';
 
 export enum BUTTON_TYPE_CLASSES {
-  google = 'google-sign-in',
+  google_sign_in = 'google_sign_in',
   inverted = 'inverted',
 }
 

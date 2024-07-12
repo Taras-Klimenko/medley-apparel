@@ -1,14 +1,7 @@
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { Routes, Route } from 'react-router-dom';
-
-import {
-  createUserDocumentFromAuth,
-  onAuthStateChangedListener,
-  getCurrentUser,
-} from './utils/firebase/firebase.utils';
-
-import { setCurrentUser, checkUserSession } from './store/user/user.action';
+import { checkUserSession } from './store/user/user.action';
 
 import ScrollToTop from './utils/utility-components/scrollToTop.utils';
 

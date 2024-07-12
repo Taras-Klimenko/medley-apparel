@@ -1,7 +1,15 @@
+import { Key } from 'react';
 import './category-list.styles.scss';
 import CategoryItem from '../category-item/category-item.component';
 
-const categories = [
+export type TCategory = {
+  id: Key;
+  title: string;
+  imageUrl: string;
+  route: string;
+};
+
+const categories: TCategory[] = [
   {
     id: 1,
     title: 'hats',
@@ -34,15 +42,14 @@ const categories = [
   },
 ];
 
-
-
-
 const CategoryList = () => {
-    return(<div className="categories-container">
-        {categories.map((category) => {
-          return <CategoryItem category={category} key={category.id} />;
-        })}
-      </div>)
-}
+  return (
+    <div className="categories-container">
+      {categories.map((category) => {
+        return <CategoryItem category={category} key={category.id} />;
+      })}
+    </div>
+  );
+};
 
 export default CategoryList;
