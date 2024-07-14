@@ -1,16 +1,23 @@
-import { useEffect } from 'react';
+import { useEffect, lazy, Suspense } from 'react';
 import { useDispatch } from 'react-redux';
 import { Routes, Route } from 'react-router-dom';
 import { checkUserSession } from './store/user/user.action';
 
 import ScrollToTop from './utils/utility-components/scrollToTop.utils';
+import Spinner from './components/spinner/spinner.component';
 
-import WelcomePage from './routes/welcome-page/welcome-page.component';
-import Home from './routes/home/home.component';
-import Navigation from './routes/navigation/navigation.component';
-import Authentication from './routes/authentication/authentication.component';
-import Shop from './routes/shop/shop.component';
-import Checkout from './routes/checkout/checkout.component';
+const WelcomePage = lazy(() =>
+  import('./routes/welcome-page/welcome-page.component')
+);
+const Home = lazy(() => import('./routes/home/home.component'));
+const Navigation = lazy(() =>
+  import('./routes/navigation/navigation.component')
+);
+const Authentication = lazy(() =>
+  import('./routes/authentication/authentication.component')
+);
+const Shop = lazy(() => import('./routes/shop/shop.component'));
+const Checkout = lazy(() => import('./routes/checkout/checkout.component'));
 
 const App = () => {
   const dispatch = useDispatch();
@@ -20,7 +27,7 @@ const App = () => {
   }, []);
 
   return (
-    <>
+    <Suspense fallback={Spinner}>
       <Routes>
         <Route index element={<WelcomePage />}></Route>
         <Route path="/" element={<Navigation />}>
@@ -31,7 +38,7 @@ const App = () => {
         </Route>
       </Routes>
       <ScrollToTop />
-    </>
+    </Suspense>
   );
 };
 

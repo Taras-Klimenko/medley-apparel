@@ -1,5 +1,5 @@
 import './cart-dropdown.styles.scss';
-import { useEffect, useRef, MutableRefObject } from 'react';
+import { useEffect, useRef, MutableRefObject, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import { useDispatch, useSelector } from 'react-redux';
@@ -46,10 +46,10 @@ const CartDropdown = ({ isCartOpen }: CartDropdownProps) => {
     };
   }, [isCartOpen, dispatch]);
 
-  const goToCheckoutHandler = () => {
+  const goToCheckoutHandler = useCallback(() => {
     dispatch(setIsCartOpen(false));
     navigate('/checkout');
-  };
+  }, []);
 
   return (
     <div
