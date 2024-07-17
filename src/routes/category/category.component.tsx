@@ -7,6 +7,7 @@ import {
   selectCategoriesIsLoading,
 } from '../../store/categories/category.selector';
 
+import CategoryDescription from '../../components/category-description/category-description.component';
 import ProductCard from '../../components/product-card/product-card.component';
 import Spinner from '../../components/spinner/spinner.component';
 
@@ -32,18 +33,26 @@ const Category = () => {
     <Fragment>
       <Link to="/shop">
         <h2 className="category-title">
-          &#10094;&#10094;&#10094;&nbsp;{category.toUpperCase()}
+          <span className="bounce-left">
+            <span>&#10094;</span>
+            <span>&#10094;</span>
+            <span>&#10094;</span>
+          </span>{' '}
+          {category.toUpperCase()}
         </h2>
       </Link>
       {isLoading ? (
         <Spinner />
       ) : (
-        <div className="single-category-container">
-          {products &&
-            products.map((product) => (
-              <ProductCard key={product.id} product={product} />
-            ))}
-        </div>
+        <>
+          <CategoryDescription category={category} />
+          <div className="single-category-container">
+            {products &&
+              products.map((product) => (
+                <ProductCard key={product.id} product={product} />
+              ))}
+          </div>
+        </>
       )}
     </Fragment>
   );

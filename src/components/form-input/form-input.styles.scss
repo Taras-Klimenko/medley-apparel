@@ -3,7 +3,7 @@ $main-color: black;
 @mixin shrinkLabel {
   top: -14px;
   font-size: 12px;
-  color: $main-color;
+  color: var(--secondary-font-color);
 }
 .group {
   position: relative;
@@ -11,7 +11,7 @@ $main-color: black;
 
   .form-input {
     background: none;
-    background-color: white;
+    background-color: var(--background);
     color: $sub-color;
     font-size: 18px;
     padding: 10px 10px 10px 5px;

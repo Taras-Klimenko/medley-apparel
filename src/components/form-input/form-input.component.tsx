@@ -15,7 +15,7 @@ const FormInput: FC<FormInputProps> = ({ label, ...otherProps }) => {
 
   return (
     <div className="group">
-      <input className="form-input" {...otherProps} />
+      <input className="form-input" {...otherProps} autoComplete="off" />
       {label && (
         <label className={inputLabelClassName} htmlFor="displayName">
           {label}

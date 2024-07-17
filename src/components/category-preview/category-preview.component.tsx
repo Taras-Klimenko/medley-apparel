@@ -14,7 +14,12 @@ const CategoryPreview = ({ title, products }: CategoryPreviewProps) => {
       <h2>
         <Link to={title}>
           <span className="title">
-            {title.toUpperCase()}&nbsp;&#10095;&#10095;&#10095;
+            {title.toUpperCase()}{' '}
+            <span className="bounce-right">
+              <span>&#10095;</span>
+              <span>&#10095;</span>
+              <span>&#10095;</span>
+            </span>
           </span>
         </Link>
       </h2>

@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap');
+@import './scss/variables';
 @import './scss/scrollbar';
 
 * {
@@ -11,14 +12,20 @@ body {
   font-family: 'Outfit', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: var(--background);
+  transition: background-color 0.33s ease, color 0.33s ease;
 }
 
 a {
   text-decoration: none;
-  color: black;
-  transition: color 0.3s ease;
+  color: var(--secondary-font-color);
+  transition: color 0.33s ease;
 
   &:hover {
-    color: lighten(black, 30%);
+    color: lighten(rgb(51, 51, 51), 30%);
+
+    &[data-theme='dark'] {
+      color: darken(rgb(200, 200, 200), 30%);
+    }
   }
 }

@@ -7,11 +7,42 @@
     font-size: 28px;
     margin-bottom: 25px;
     cursor: pointer;
+
+    &:hover span {
+      animation: bounce 0.81s ease-out infinite alternate;
+    }
   }
 
   .preview {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     column-gap: 20px;
+  }
+
+  .bounce-right {
+    display: inline-flex;
+
+    span {
+      display: inline-block;
+    }
+
+    span:nth-child(1) {
+      animation-delay: 0s;
+    }
+    span:nth-child(2) {
+      animation-delay: 0.27s;
+    }
+    span:nth-child(3) {
+      animation-delay: 0.54s;
+    }
+
+    @keyframes bounce {
+      from {
+        transform: translateX(0);
+      }
+      to {
+        transform: translateX(5px);
+      }
+    }
   }
 }
