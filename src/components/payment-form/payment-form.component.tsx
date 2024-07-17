@@ -67,7 +67,17 @@ const PaymentForm = () => {
     <div className="payment-form-container">
       <form className="payment-form" onSubmit={paymentHandler}>
         <h2>Credit Card Payment:</h2>
-        <CardElement />
+        <CardElement
+          options={{
+            style: {
+              base: {
+                color: 'rgb(120, 120, 120)',
+                fontFamily: 'Outfit, sans-serif',
+                fontSize: '18px',
+              },
+            },
+          }}
+        />
         <Button
           isLoading={isProcessingPayment}
           buttonType={BUTTON_TYPE_CLASSES.inverted}
