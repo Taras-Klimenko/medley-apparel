@@ -61,6 +61,11 @@ export type SetCartItems = ActionWithPayload<
   CartItem[]
 >;
 
+export type ClearCartItems = ActionWithPayload<
+  CART_ACTION_TYPES.CLEAR_CART,
+  undefined
+>;
+
 export const setIsCartOpen = withMatcher((boolean: boolean): SetIsCartOpen => {
   return createAction(CART_ACTION_TYPES.SET_IS_CART_OPEN, boolean);
 });
@@ -93,3 +98,7 @@ export const clearItemFromCart = (
   const newCartItems = clearCartItem(cartItems, cartItemToClear);
   return setCartItems(newCartItems);
 };
+
+export const ClearCart = withMatcher((): ClearCartItems => {
+  return createAction(CART_ACTION_TYPES.CLEAR_CART, undefined);
+});
