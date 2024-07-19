@@ -1,0 +1,37 @@
+// Media Queries
+
+@mixin tablet-horizontal-large {
+  @media (max-width: 1367px) {
+    @content;
+  }
+}
+
+@mixin tablet-horizontal {
+  @media (orientation: landscape) and (max-width: 1181px) {
+    @content;
+  }
+}
+
+@mixin tablet-vertical {
+  @media (orientation: portrait) and (max-width: 1025px) {
+    @content;
+  }
+}
+
+@mixin smartphone-horizontal {
+  @media (orientation: landscape) and (max-height: 450px) {
+    @content;
+  }
+}
+
+@mixin smartphone-vertical {
+  @media (max-width: 600px) {
+    @content;
+  }
+}
+
+@mixin smartphone-small {
+  @media (orientation: portrait) and (max-height: 700px) {
+    @content;
+  }
+}

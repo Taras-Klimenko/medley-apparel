@@ -1,6 +1,25 @@
+@import '../../scss/mixins';
+
 .authentication-container {
   display: flex;
+  gap: 100px;
   justify-content: space-between;
-  width: 900px;
+  width: 100%;
+  max-width: 900px;
   margin: 30px auto;
+
+  @include tablet-vertical {
+    padding: 10px;
+    flex-direction: column;
+    row-gap: 50px;
+    width: 90vw;
+  }
+
+  @include smartphone-horizontal {
+    flex-direction: column;
+  }
+
+  @include smartphone-vertical {
+    padding: 0;
+  }
 }

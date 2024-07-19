@@ -1,3 +1,5 @@
+@import '../../scss/mixins';
+
 %fullscreen-fixed {
   position: fixed;
   top: 0;
@@ -29,13 +31,26 @@
     h1 {
       position: relative;
       color: rgb(200, 200, 200);
-      font-size: clamp(3.5rem, 5vw, 5rem);
+      font-size: clamp(3.5rem, 5rem, 7rem);
+      text-align: center;
       text-transform: uppercase;
       font-weight: 500;
       z-index: 1;
       margin-bottom: 0;
       animation: colorBreath 1.5s ease-in-out infinite alternate,
         focus-in-contract 1.5s ease-in;
+
+      @include tablet-vertical {
+        font-size: 5rem;
+      }
+
+      @include smartphone-vertical {
+        font-size: 4rem;
+      }
+
+      @include smartphone-horizontal {
+        font-size: 2.5rem;
+      }
     }
 
     @keyframes colorBreath {
@@ -55,6 +70,14 @@
       font-weight: 200;
       opacity: 0;
       animation: focus-in-contract 1.5s ease-in forwards;
+
+      @include smartphone-vertical {
+        margin: 30px;
+        margin-bottom: -50px;
+      }
+      @include smartphone-horizontal {
+        font-size: 1.5rem;
+      }
     }
 
     @keyframes focus-in-contract {
@@ -74,6 +97,11 @@
       display: flex;
       opacity: 0;
       animation: fade-in 1s ease-in 1.7s forwards;
+
+      @include smartphone-vertical {
+        flex-direction: column;
+        gap: 20px;
+      }
 
       button {
         margin: 0 40px;

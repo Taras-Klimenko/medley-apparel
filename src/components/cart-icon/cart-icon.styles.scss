@@ -6,6 +6,15 @@
   align-items: center;
   justify-content: center;
   cursor: pointer;
+  color: var(--secondary-font-color);
+
+  svg {
+    g {
+      path {
+        fill: var(--secondary-font-color);
+      }
+    }
+  }
 
   .shopping-icon {
     position: relative;

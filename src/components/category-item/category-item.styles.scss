@@ -1,6 +1,8 @@
+@import '../../scss/mixins';
+
 .category-container {
   min-width: 30%;
-  height: 240px;
+  height: 30dvh;
   flex: 1 1 auto;
   display: flex;
   align-items: center;
@@ -8,6 +10,10 @@
   border: 1px solid black;
   margin: 0 7.5px 15px;
   overflow: hidden;
+
+  @include smartphone-horizontal {
+    height: 240px;
+  }
 
   &:hover {
     cursor: pointer;
@@ -39,6 +45,7 @@
     background-position: center;
   }
   .category-body-container {
+    width: 20vw;
     height: 90px;
     padding: 0 25px;
     display: flex;
@@ -50,16 +57,29 @@
     opacity: 0.7;
     position: absolute;
 
+    @include smartphone-vertical {
+      width: 35vw;
+    }
+
     h2 {
       font-weight: bold;
       text-transform: uppercase;
       margin: 0 6px 0;
       font-size: 22px;
       color: #4a4a4a;
+
+      @include smartphone-vertical {
+        font-size: 1.2rem;
+      }
     }
+
     p {
-      font-weight: lighter;
+      font-weight: 400;
       font-size: 16px;
+
+      @include smartphone-vertical {
+        font-size: 0.8rem;
+      }
     }
   }
 }
