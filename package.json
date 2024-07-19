@@ -33,8 +33,9 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
+    "install-force": "npm install --force",
     "start": "react-scripts start",
-    "build": "react-scripts build",
+    "build": "npm run install-force && react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
