@@ -27,7 +27,7 @@ const App = () => {
   }, []);
 
   return (
-    <Suspense fallback={Spinner}>
+    <Suspense fallback={<Spinner />}>
       <Routes>
         <Route index element={<WelcomePage />}></Route>
         <Route path="/" element={<Navigation />}>

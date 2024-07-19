@@ -1,6 +1,11 @@
 .theme-switch-container {
   font-size: 1.5rem;
   margin-left: 15px;
+  margin-right: 10px;
   cursor: pointer;
   color: var(--secondary-font-color);
+
+  @media (max-width: 600px) {
+    margin-right: 10px;
+  }
 }

@@ -1,8 +1,16 @@
+@import '../../scss/mixins';
+
 .single-category-container {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   column-gap: 20px;
   row-gap: 50px;
+
+  @include smartphone-vertical {
+    grid-template-columns: 1fr 1fr;
+    column-gap: 10px;
+    row-gap: 40px;
+  }
 }
 
 .category-title {

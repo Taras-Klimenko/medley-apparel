@@ -1,3 +1,5 @@
+@import '../../scss/mixins';
+
 .product-card-container {
   width: 100%;
   display: flex;
@@ -15,11 +17,20 @@
   }
 
   button {
-    width: 80%;
+    width: 90%;
     opacity: 0.9;
     position: absolute;
     top: 255px;
     display: none;
+    padding: 0 10px;
+
+    @include smartphone-horizontal {
+      font-size: 0.8rem;
+    }
+
+    @media (max-width: 1367px) {
+      display: unset;
+    }
   }
   &:hover {
     img {
@@ -38,13 +49,17 @@
     justify-content: space-between;
     font-size: 18px;
     color: var(--secondary-font-color);
+
+    @include tablet-vertical {
+      font-size: 1rem;
+    }
     .name {
-      width: 80%;
+      width: 70%;
       margin-bottom: 15px;
     }
     .price {
       text-align: end;
-      width: 20%;
+      width: 30%;
     }
   }
 }

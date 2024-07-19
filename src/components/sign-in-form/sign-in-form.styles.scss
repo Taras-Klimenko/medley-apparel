@@ -1,7 +1,9 @@
+@import '../../scss/mixins';
+
 .sign-in-container {
   display: flex;
   flex-direction: column;
-  width: 380px;
+  width: 50vw;
   color: var(--secondary-font-color);
 
   h2 {
@@ -11,5 +13,13 @@
   .buttons-container {
     display: flex;
     justify-content: space-between;
+
+    @include smartphone-vertical {
+      gap: 20px;
+    }
+  }
+
+  @include smartphone-vertical {
+    width: 70vw;
   }
 }

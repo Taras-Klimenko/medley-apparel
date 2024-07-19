@@ -1,10 +1,16 @@
+@import '../../scss/mixins';
+
 .sign-up-container {
   display: flex;
   flex-direction: column;
-  width: 380px;
+  width: 50vw;
   color: var(--secondary-font-color);
 
   h2 {
     margin: 10px 0;
+  }
+
+  @include smartphone-vertical {
+    width: 70vw;
   }
 }

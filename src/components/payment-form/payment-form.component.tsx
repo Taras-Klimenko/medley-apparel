@@ -73,9 +73,9 @@ const PaymentForm = () => {
           options={{
             style: {
               base: {
-                color: 'rgb(120, 120, 120)',
+                color: 'rgb(128, 128, 128)',
                 fontFamily: 'Outfit, sans-serif',
-                fontSize: '18px',
+                fontSize: '16px',
               },
             },
           }}
